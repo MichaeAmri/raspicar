@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Wifi controlled car</title>
+
+	<script type="text/javascript">
+		
+		document.onkeypress = keypressed;
+		
+		function sendMotion (action){
+			request = new XMLHttpRequest ( );
+			request.open ("GET", action, true);
+			request.send ( );
+		}
+		
+		function keypressed (event) {
+			var keyCd = ('charCode' in event) ? event.charCode : event.keyCode;
+
+			switch(keyCd){
+
+				case 119:
+					sendMotion('forward');
+					break;
+				case 115:
+					sendMotion('backward');
+					break;
+				case 113:
+					sendMotion('stop');
+					break;
+				case 97:
+					sendMotion('left');
+					break;
+				case 100:
+					sendMotion('right');
+					break;
+				default:
+					sendMotion('stop')
+					break;
+			}
+		}
+	</script>
+</head>
+
+	<body>
+		<h1>Car control panell</h1>
+		Use <strong>wasd</strong> to control, <strong>q</strong> to stop
+	</body>
+
+</html>
